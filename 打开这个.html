@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+        html,body{width: 100%;height: 100%;position: relative;}
+        .body{width: 150px;height: 150px;text-align: center;border: 1px solid;margin: auto;line-height: 150px;position: absolute;}
+        #print{position: absolute;top:-2000px;left: -2000px;z-index: 10;transition: 2s linear;}
+        #round{width: 150px;height: 150px;position: absolute;top: 50%;left: 50%;transform: translate(-75px,-75px)rotate(45deg);perspective: 2000px;perspective-origin: 200px;}
+        #box{transform-style: preserve-3d;width: 100%;height: 100%;transition: 2s linear;}
+        #y{transform-origin: center;z-index: 10;transform:rotate3d(1,1,0,90deg);}
+        #z{transform-origin: center;transform:rotate3d(-1,1,0,90deg);}
+        #box:hover{transform-origin: center;transform: rotate3d(1,1,1,360deg);}
+        #enter{transform:rotate(-45deg)translate(100px,65px);font: normal bold 20px "微软雅黑";cursor: pointer;animation:enter 2s linear infinite both;display: block;color: black;text-decoration: none;}
+        .go{
+            animation: go 1s linear 0s 1 normal forwards running;
+        }
+        em{font-style: normal;display: inline-block;}
+        @keyframes enter{
+            50%{font-size: 40px;}
+            100%{font-size: 20px;}
+        }
+        @keyframes go{
+            25%{transform: rotate3d(1,1,0,360deg)}
+            50%{transform: rotate3d(1,1,0,720deg)}
+            75%{transform: rotate3d(1,1,0,1080deg)}
+            100%{transform: rotate3d(1,1,0,1440deg)}
+        }
+    </style>
+</head>
+<body id="body">
+    <div id="round">
+        <div id="box">
+            <div id="x" class="body"></div>
+            <div id="y" class="body"></div>
+            <div id="z" class="body"></div> 
+            <div id="line"></div>
+        </div>
+        <a id="enter">enter<br/></a>
+    <script type="text/javascript">
+        $("#enter").click(function(){
+            $("#box").addClass("go");
+            $("#round").animate({"top":"-30%"},1000,"linear");
+            $("#enter").animate({"opacity":"0"},300,"linear");
+            window.setTimeout(function(){
+                window.location.href="hw.html";
+            },1000)
+        });
+    </script>
+</body>
+</html>
